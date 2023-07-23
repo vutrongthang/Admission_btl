@@ -43,14 +43,7 @@
                                 </c:forEach>
                                 <!-- Add more options here -->
                             </select>                        </li>
-                        <li class="nav-item">
-                            <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location = this.value;">
-                                <option selected>Thông tin tham khảo</option>
-                                <option selected>Tạp chí y học</option>
-
-                                <!-- Add more options here -->
-                            </select> 
-                        </li>
+                        
                         <li class="nav-item">
                             <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location = this.value;">
                                 <option selected>Tin Tức</option>
@@ -63,9 +56,13 @@
                     </ul>
                 </div>
                 <!-- Right-aligned items -->
-                <div class="d-flex">
-                    <a class="btn btn-outline-primary me-2 " href="#">Đăng ký</a>
-                    <a class="btn btn-primary " href="#">Đăng nhập</a>
+                <div class="d-flex align-items-center">
+                    <form class="d-flex me-2">
+                        <input class="form-control" type="search" placeholder="Tìm kiếm" aria-label="Tìm kiếm">
+                        <button class="btn btn-outline-primary" type="submit">Tìm</button>
+                    </form>
+                    <a class="btn btn-outline-primary btn-sm me-2" href="#">Đăng ký</a>
+                    <a class="btn btn-primary btn-sm" href="#">Đăng nhập</a>
                 </div>
 
             </div>
