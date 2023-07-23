@@ -25,7 +25,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Thông tin tuyển sinh</a>
                         </li>
@@ -41,15 +41,40 @@
                         <!-- Add more navigation items here -->
                     </ul>
                 </div>
+                <!-- Right-aligned items -->
+                <div class="d-flex">
+                    <a class="btn btn-outline-primary me-2" href="#">Đăng ký</a>
+                    <a class="btn btn-primary" href="#">Đăng nhập</a>
+                </div>
             </div>
         </nav>
 
+
+
         <!-- Display banners here -->
-        <c:forEach var="banner" items="${banners}">
-            <div class="banner">
-                <img src="${banner.image}" alt="banner">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <c:forEach var="banner" items="${banners}" varStatus="status">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${status.index}" class="${status.index == 0 ? 'active' : ''}" aria-label="Slide ${status.index + 1}"></button>
+                </c:forEach>
             </div>
-        </c:forEach>
+            <div class="carousel-inner">
+                <c:forEach var="banner" items="${banners}" varStatus="status">
+                    <div class="carousel-item ${status.index == 0 ? 'active' : ''}">
+                        <img src="${banner.image}" class="d-block w-100" alt="Slide ${status.index + 1}">
+                    </div>
+                </c:forEach>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
 
 
 
@@ -65,7 +90,7 @@
                                 <h5 class="card-title">${faculty.name}</h5>
                                 <p class="card-text">${faculty.description}</p>
                                 <p class="card-text">${faculty.score}</p>
-                                <a href="#" class="btn btn-primary">Learn more</a>
+                                <a href="${facutly.website}" class="btn btn-primary">Chi tiết</a>
                             </div>
                         </div>
                     </div>
