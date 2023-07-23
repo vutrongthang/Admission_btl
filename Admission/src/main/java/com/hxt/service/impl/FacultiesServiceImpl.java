@@ -26,4 +26,9 @@ public class FacultiesServiceImpl implements FacultiesService {
         return facultiesRepository.getFacultieses();
     }
 
+    @Override
+    public Faculties getFacultiesId(int id) {
+        return this.facultiesRepository.getFacultiesId(id);
+    }
+
 }

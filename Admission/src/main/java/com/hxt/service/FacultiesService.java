@@ -12,5 +12,9 @@ import java.util.List;
  * @author vutrongthang
  */
 public interface FacultiesService {
-    List<Faculties>getFacultieses();
+
+    List<Faculties> getFacultieses();
+
+    Faculties getFacultiesId(int id);
+
 }

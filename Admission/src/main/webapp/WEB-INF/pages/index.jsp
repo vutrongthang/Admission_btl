@@ -27,25 +27,47 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Thông tin tuyển sinh</a>
+                            <select class="form-select me-2" aria-label="Thông tin tuyển sinh" onchange="location = this.value;">
+                                <option selected>Thông tin tuyển sinh</option>
+                                <c:forEach items="${admission_info}" var="admission">
+                                    <option >${admission.admissionType}</option>
+                                </c:forEach>
+
+                                <!-- Add more options here -->
+                            </select>                        </li>
+                        <li class="nav-item">
+                            <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location = this.value;">
+                                <option selected>Thông tin khoa-ngành</option>
+                                <c:forEach items="${faculties}" var="f">
+                                    <option >${f.name}</option>
+                                </c:forEach>
+                                <!-- Add more options here -->
+                            </select>                        </li>
+                        <li class="nav-item">
+                            <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location = this.value;">
+                                <option selected>Thông tin tham khảo</option>
+                                <option selected>Tạp chí y học</option>
+
+                                <!-- Add more options here -->
+                            </select> 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Thông tin khoa-ngành</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Thông tin tham khảo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Liên hệ</a>
+                            <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location = this.value;">
+                                <option selected>Tin Tức</option>
+                                <option value="1">Sự kiện</option>
+                                <option value="2">Thông báo</option>
+                                <!-- Add more options here -->
+                            </select> 
                         </li>
                         <!-- Add more navigation items here -->
                     </ul>
                 </div>
                 <!-- Right-aligned items -->
                 <div class="d-flex">
-                    <a class="btn btn-outline-primary me-2" href="#">Đăng ký</a>
-                    <a class="btn btn-primary" href="#">Đăng nhập</a>
+                    <a class="btn btn-outline-primary me-2 " href="#">Đăng ký</a>
+                    <a class="btn btn-primary " href="#">Đăng nhập</a>
                 </div>
+
             </div>
         </nav>
 
@@ -74,6 +96,7 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+
 
 
 
