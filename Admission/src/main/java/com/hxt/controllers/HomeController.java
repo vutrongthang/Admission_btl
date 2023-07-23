@@ -7,9 +7,10 @@ package com.hxt.controllers;
 import com.hxt.pojo.AdmissionInfo;
 import com.hxt.pojo.Banners;
 import com.hxt.pojo.Faculties;
+import com.hxt.service.AdmissionService;
 //import com.hxt.service.AdmissionService;
-//import com.hxt.service.BannerService;
-//import com.hxt.service.FacultiesService;
+import com.hxt.service.BannerService;
+import com.hxt.service.FacultiesService;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,27 +31,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 @ControllerAdvice
 public class HomeController {
 
-//    @Autowired
-//    private FacultiesService facultiesService;
-//    @Autowired
-//    private BannerService bannerService;
-//    @Autowired
-//    private AdmissionService admissionService;
-//
-//    @ModelAttribute
-//    public void commonAttributes(Model model) {
-//        List<Banners> banners = this.bannerService.getBannerses();
-//        model.addAttribute("banners", banners);
-//    }
-//
-//    @RequestMapping("/")
-//    public String index(Model model) {
-//        // Lấy danh sách các khoa học trường từ FacultiesService
-//        List<Faculties> faculties = facultiesService.getFacultieses();
-//        model.addAttribute("faculties", faculties);
-//
-//        // Trả về tên view của trang chủ
-//        return "index";
-//    }
+    @Autowired
+    private FacultiesService facultiesService;
+    @Autowired
+    private BannerService bannerService;
+    @Autowired
+    private AdmissionService admissionService;
+
+    @ModelAttribute
+    public void commonAttributes(Model model) {
+        List<Banners> banners = this.bannerService.getBannerses();
+        model.addAttribute("banners", banners);
+    }
+
+    @RequestMapping("/")
+    public String index(Model model) {
+        // Lấy danh sách các khoa học trường từ FacultiesService
+        List<Faculties> faculties = facultiesService.getFacultieses();
+        model.addAttribute("faculties", faculties);
+
+        List<AdmissionInfo> admissionInfos = admissionService.getAdmissionInfos();
+        model.addAttribute("admission_info", admissionInfos);
+        // Trả về tên view của trang chủ
+        return "index";
+
+    }
 
 }
