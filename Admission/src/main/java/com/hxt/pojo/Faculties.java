@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Faculties.findByName", query = "SELECT f FROM Faculties f WHERE f.name = :name"),
     @NamedQuery(name = "Faculties.findByDescription", query = "SELECT f FROM Faculties f WHERE f.description = :description"),
     @NamedQuery(name = "Faculties.findByWebsite", query = "SELECT f FROM Faculties f WHERE f.website = :website"),
+    @NamedQuery(name = "Faculties.findByImage", query = "SELECT f FROM Faculties f WHERE f.image = :image"),
     @NamedQuery(name = "Faculties.findByScore", query = "SELECT f FROM Faculties f WHERE f.score = :score")})
 public class Faculties implements Serializable {
 
@@ -53,6 +54,11 @@ public class Faculties implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "website")
     private String website;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "image")
+    private String image;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -103,6 +109,12 @@ public class Faculties implements Serializable {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+    public String getImage() {
+        return image;
+    }
+      public void setImage(String image) {
+        this.image = image;
     }
 
     public String getScore() {

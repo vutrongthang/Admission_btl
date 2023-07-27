@@ -8,6 +8,9 @@
 
 
 
+
+
+
 <!-- Display banners here -->
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -41,6 +44,8 @@
     <div class="row">
         <!-- Display faculties here -->
         <c:forEach var="faculty" items="${faculties}">
+            <c:url value="/faculties/${faculty.facultiesId}" var ="detail"/>
+
             <div class="col-md-4 mb-4">
                 <div class="card">
 
@@ -48,13 +53,17 @@
                         <h5 class="card-title">${faculty.name}</h5>
                         <p class="card-text">${faculty.description}</p>
                         <p class="card-text">${faculty.score}</p>
-                        <a href="${facutly.website}" class="btn btn-primary">Chi tiết</a>
+                        <a href="${detail}" class="btn btn-primary" type="button">Chi tiết</a>
                     </div>
                 </div>
             </div>
         </c:forEach>
+        
     </div>
+
 </div>
+
+
 
 
 
