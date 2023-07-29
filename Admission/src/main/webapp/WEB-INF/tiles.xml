@@ -19,5 +19,6 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Chi tiết khoa" />
         <put-attribute name="content" value="/WEB-INF/pages/faculty-detail.jsp" />
     </definition>
+   
     
 </tiles-definitions>

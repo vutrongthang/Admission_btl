@@ -6,19 +6,16 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<div class="container mt-3">
+<div class="container my-5">
     <div class="row">
-        <div class="col">
-            <!-- Display faculty detail here -->
-            <div class="card">
-                <img src="faculty1.jpg" class="card-img-top" alt="${faculties.name}">
-                <div class="card-body">
-                    <h5 class="card-title">${faculties.name}</h5>
-                    <p class="card-text">${faculties.description}</p>
-                    <p class="card-text">Score: ${faculties.score}</p>
-                    <a href="#" class="btn btn-primary">Learn more</a>
-                </div>
-            </div>
+        <div class="col-md-6">
+            <!-- Display faculty detail here -->         
+                <img src="${faculties.image}" class="card-img-top" alt="${faculties.name}">   
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">${faculties.name}</h5>
+            <p class="card-text">${faculties.description}</p>
+            <p class="card-text">Score: ${faculties.score}</p>
         </div>
     </div>
 </div>

@@ -52,7 +52,7 @@
                     <div class="card-body">
                         <h5 class="card-title">${faculty.name}</h5>
                         <p class="card-text">${faculty.description}</p>
-                        <p class="card-text">${faculty.score}</p>
+                        <p class="card-text">Score: ${faculty.score}</p>
                         <a href="${detail}" class="btn btn-primary" type="button">Chi tiết</a>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
         </c:forEach>
         
     </div>
-
+   
 </div>
 
 

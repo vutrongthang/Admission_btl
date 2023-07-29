@@ -64,5 +64,6 @@ public class HomeController {
         model.addAttribute("faculties", this.facultiesService.getFacultiesId(id));
         return "faculty-detail";
     }
+  
 
 }

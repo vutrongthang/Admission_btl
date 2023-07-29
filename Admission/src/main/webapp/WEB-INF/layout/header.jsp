@@ -25,23 +25,17 @@
 
                         <!-- Add more options here -->
                     </select>                        </li>
-                
-               <li class="nav-item">
-    <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="redirectToFacultyDetail(this.value);">
-        <option value="/" selected>Thông tin khoa-ngành</option>
-        <c:forEach items="${faculties}" var="faculty">
-            <c:url value="/faculties/${faculty.facultiesId}" var="detail" />
-            <option value="${detail}">${faculty.name}</option>
-        </c:forEach>
-    </select>
-</li>
-<script>
-function redirectToFacultyDetail(url) {
-    if (url !== '/') {
-        window.location.href = url;
-    }
-}
-</script>
+
+                <li class="nav-item">
+                    <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location=this.value;">
+                        <option value="/" selected>Thông tin khoa-ngành</option>
+                        <option value="/Admission">Các khoa</option>
+                        <option value="/Admission">Bệnh viện</option>
+                        <option value="/Admission">Trung tâm</option>
+                        <option value="/Admission">Đơn vị</option>
+                    </select>
+                </li>
+              
 
                 <li class="nav-item">
                     <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location = this.value;">
