@@ -10,12 +10,14 @@
     <div class="row">
         <div class="col-md-6">
             <!-- Display faculty detail here -->         
-                <img src="${faculties.image}" class="card-img-top" alt="${faculties.name}">   
+            <img src="${faculties.image}" class="card-img-top" alt="${faculties.name}">   
         </div>
         <div class="col-md-6">
             <h5 class="card-title">${faculties.name}</h5>
             <p class="card-text">${faculties.description}</p>
             <p class="card-text">Score: ${faculties.score}</p>
+            <button class="btn btn-primary">
+                <a style="color: black; text-decoration: none" href="${faculties.website}">Website</a></button>
         </div>
     </div>
 </div>

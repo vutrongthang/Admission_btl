@@ -21,6 +21,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -83,6 +84,8 @@ public class Users implements Serializable {
     private Set<Questions> questionsSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Set<Comment> commentSet;
+    @Transient
+    private String confirmPassword;
 
     public Users() {
     }
@@ -131,8 +134,16 @@ public class Users implements Serializable {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
     public String getPermissionRole() {
         return permissionRole;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public void setPermissionRole(String permissionRole) {
@@ -205,5 +216,5 @@ public class Users implements Serializable {
     public String toString() {
         return "com.hxt.pojo.Users[ userId=" + userId + " ]";
     }
-    
+
 }
