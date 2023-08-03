@@ -63,10 +63,10 @@
                 <!-- Login and Register buttons -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng nhập</a>
+                        <a class="nav-link" href="<c:url value="/login"/>">Đăng nhập</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Đăng ký</a>
+                        <a class="nav-link" href="<c:url value="/register"/>">Đăng ký</a>
                     </li>
                 </ul>
             </div>
