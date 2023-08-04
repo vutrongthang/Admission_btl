@@ -19,30 +19,33 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class AuthController {
-     @Autowired
+
+    @Autowired
     private UserService userDetailsService;
-    
-    
+
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
+
     @GetMapping("/register")
-    public String registerView(Model model){
-        model.addAttribute("user", new Users());
+    public String registerView(Model model) {
+        model.addAttribute("users", new Users());
         return "register";
     }
-    
+
     @PostMapping("/register")
-    public String register(Model model,@ModelAttribute(value = "user")Users user){
-        String errMsg = "" ;
-        if(user.getPassword().equals(user.getConfirmPassword())){
-            if(this.userDetailsService.saveUser(user)== true)
+    public String register(Model model, @ModelAttribute(value = "users") Users user) {
+        String errMsg = "";
+        if (user.getPassword() != null && user.getConfirmPassword() != null && user.getPassword().equals(user.getConfirmPassword())) {
+            if (this.userDetailsService.saveUser(user) == true) {
                 return "redirect:/login";
-            else
-                errMsg ="Đã có lỗi xảy ra";
-        }else
-            errMsg ="Mật khẩu không đúng";
+            } else {
+                errMsg = "Đã có lỗi xảy ra";
+            }
+        } else {
+            errMsg = "Mật khẩu không đúng";
+        }
         model.addAttribute("errMsg", errMsg);
         return "register";
     }
