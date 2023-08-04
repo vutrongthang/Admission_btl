@@ -23,8 +23,8 @@
                     </c:if>
                     <form action="${action}" method="post">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <label for="name" class="form-label">Tên đăng nhập</label>
+                            <input type="name" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Mật khẩu</label>
