@@ -137,14 +137,12 @@ public class Users implements Serializable {
     public String getConfirmPassword() {
         return confirmPassword;
     }
-
-    public String getPermissionRole() {
-        return permissionRole;
-    }
-
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
+    public String getPermissionRole() {
+        return permissionRole;
+    } 
 
     public void setPermissionRole(String permissionRole) {
         this.permissionRole = permissionRole;

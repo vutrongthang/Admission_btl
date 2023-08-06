@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author vutrongthang
  */
 @Controller
+
 public class AuthController {
 
     @Autowired
@@ -37,14 +38,14 @@ public class AuthController {
     @PostMapping("/register")
     public String register(Model model, @ModelAttribute(value = "users") Users user) {
         String errMsg = "";
-        if (user.getPassword() != null && user.getConfirmPassword() != null && user.getPassword().equals(user.getConfirmPassword())) {
+        if (user.getPassword().equals(user.getConfirmPassword())) {
             if (this.userDetailsService.saveUser(user) == true) {
                 return "redirect:/login";
             } else {
-                errMsg = "Đã có lỗi xảy ra";
+                errMsg = "Da co loi xay ra";
             }
         } else {
-            errMsg = "Mật khẩu không đúng";
+            errMsg = "Mat khau khong dung";
         }
         model.addAttribute("errMsg", errMsg);
         return "register";
