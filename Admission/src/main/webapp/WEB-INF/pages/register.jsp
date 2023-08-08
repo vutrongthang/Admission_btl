@@ -20,7 +20,7 @@
         </div>
     </c:if>
 
-    <form:form method="post" action="${action}" modelAttribute="users" enctype="multipart/form-data">
+    <form:form method="post" action="${action}" modelAttribute="users" >
         <div class="mb-3">
             <label for="name" class="form-label">Username</label>
             <form:input type="text" class="form-control" id="name" path="name" placeholder="Enter name" />
@@ -44,6 +44,8 @@
             <form:input type="text" class="form-control" id="email" path="email" placeholder="Enter email" />
             <form:errors path="email" class="text-danger" />
         </div>
+
+        
 
         <button type="submit" class="btn btn-primary">Đăng ký</button>
     </form:form>

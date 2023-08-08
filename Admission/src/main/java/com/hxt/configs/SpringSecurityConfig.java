@@ -49,7 +49,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().loginPage("/login")
-                .usernameParameter("username")
+                .usernameParameter("name")
                 .passwordParameter("password");
         http.formLogin().defaultSuccessUrl("/").failureUrl("/login?error");
 ////        http.formLogin().successHandler(this.loginSuccessHandler);

@@ -21,17 +21,17 @@
                             <strong>Tài khoản hoặc mật khẩu không chính xác!</strong>${params.error}
                         </div>
                     </c:if>
-                    <form action="${action}" method="post">
+                    <form action="${action}" method="post" >
                         <div class="mb-3">
                             <label for="name" class="form-label">Tên đăng nhập</label>
-                            <input type="name" class="form-control" id="name" name="name" required>
+                            <input type="text" class="form-control" id="name" name="name" >
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Mật khẩu</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password" >
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                            <button type="submit" value="Đăng nhập" class="btn btn-primary">Đăng nhập</button>
                         </div>
                     </form>
                 </div>

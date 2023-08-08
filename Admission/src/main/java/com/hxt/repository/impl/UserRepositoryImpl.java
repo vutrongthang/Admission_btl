@@ -3,7 +3,6 @@ package com.hxt.repository.impl;
 import com.hxt.pojo.Users;
 import com.hxt.repository.UserRepository;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,17 +12,19 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import org.hibernate.HibernateException;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @Repository
 @Transactional
 public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
-    private SessionFactory sessionFactory;
+    private LocalSessionFactoryBean sessionFactory;
 
     @Override
     public List<Users> getUsers(String username) {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Users> criteriaQuery = criteriaBuilder.createQuery(Users.class);
         Root<Users> root = criteriaQuery.from(Users.class);
@@ -38,8 +39,9 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    
     public Users getUserByUsername(String username) {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Users> criteriaQuery = criteriaBuilder.createQuery(Users.class);
         Root<Users> root = criteriaQuery.from(Users.class);
@@ -55,12 +57,12 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean saveUser(Users user) {
-        Session session = sessionFactory.getCurrentSession();
-        try {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try{
             session.save(user);
             return true;
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        }catch(HibernateException ex){
+            System.err.println(ex.getMessage());
         }
         return false;
     }

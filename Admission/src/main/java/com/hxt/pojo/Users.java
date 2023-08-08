@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -85,6 +86,7 @@ public class Users implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Set<Comment> commentSet;
     @Transient
+    @Size(min = 1, max = 255)
     private String confirmPassword;
 
     public Users() {
@@ -134,15 +136,9 @@ public class Users implements Serializable {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
     public String getPermissionRole() {
         return permissionRole;
-    } 
+    }
 
     public void setPermissionRole(String permissionRole) {
         this.permissionRole = permissionRole;
@@ -156,6 +152,11 @@ public class Users implements Serializable {
         this.avatar = avatar;
     }
 
+    @PrePersist
+    protected void onCreate() {
+        dateJoin = new Date();
+    }
+    
     public Date getDateJoin() {
         return dateJoin;
     }
@@ -213,6 +214,20 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         return "com.hxt.pojo.Users[ userId=" + userId + " ]";
+    }
+
+    /**
+     * @return the confirmPassword
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * @param confirmPassword the confirmPassword to set
+     */
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
 }

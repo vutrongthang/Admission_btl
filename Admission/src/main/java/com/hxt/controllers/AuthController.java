@@ -6,8 +6,10 @@ package com.hxt.controllers;
 
 import com.hxt.pojo.Users;
 import com.hxt.service.UserService;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author vutrongthang
  */
 @Controller
-
 public class AuthController {
 
     @Autowired
@@ -39,6 +40,7 @@ public class AuthController {
     public String register(Model model, @ModelAttribute(value = "users") Users user) {
         String errMsg = "";
         if (user.getPassword().equals(user.getConfirmPassword())) {
+
             if (this.userDetailsService.saveUser(user) == true) {
                 return "redirect:/login";
             } else {
