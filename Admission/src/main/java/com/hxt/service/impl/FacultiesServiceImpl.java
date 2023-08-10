@@ -31,4 +31,10 @@ public class FacultiesServiceImpl implements FacultiesService {
         return this.facultiesRepository.getFacultiesId(id);
     }
 
+    @Override
+    public boolean addOrUpdateFaculties(Faculties f) {
+        return facultiesRepository.addOrUpdateFaculties(f);
+
+    }
+
 }

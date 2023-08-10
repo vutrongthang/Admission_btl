@@ -17,4 +17,6 @@ public interface FacultiesService {
 
     Faculties getFacultiesId(int id);
 
+    boolean addOrUpdateFaculties(Faculties f);
+
 }

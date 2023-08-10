@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -39,8 +40,8 @@ public class FacultiesRepositoryImpl implements FacultiesRepository {
 
         String queryString = "SELECT f FROM Faculties f";
         Query query = session.createQuery(queryString);
-        return query.getResultList(); 
-}
+        return query.getResultList();
+    }
 
     @Override
     public Faculties getFacultiesId(int id) {
@@ -52,7 +53,17 @@ public class FacultiesRepositoryImpl implements FacultiesRepository {
 
     @Override
     public boolean addOrUpdateFaculties(Faculties f) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session s = sessionFactory.getObject().getCurrentSession();
+        try {
+            if (f.getFacultiesId()> 0) {
+                s.update(f);
+            } else {
+                s.save(f);
+            }
+            return true;
+        } catch (HibernateException ex) {
+            return false;
+        }
     }
 
 }

@@ -12,9 +12,11 @@ import java.util.List;
  * @author vutrongthang
  */
 public interface FacultiesRepository {
-        List<Faculties>getFacultieses();
-        Faculties getFacultiesId(int id);
+
+    List<Faculties> getFacultieses();
+
+    Faculties getFacultiesId(int id);
+
     boolean addOrUpdateFaculties(Faculties f);
 
-}    
-
+}

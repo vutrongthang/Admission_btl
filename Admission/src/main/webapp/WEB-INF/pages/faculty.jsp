@@ -39,20 +39,20 @@
 <c:if test="${errMsg != null}">
     ${errMsg}
 </c:if>
-<form:form method="post" action="${action}"  modelAttribute="faculties">
+<form method="post" action="${action}" th:object="${faculties}">
     <div class="form-floating mb-3 mt-3">
-        <form:input type="text" class="form-control" id="name" 
-                    path="name" placeholder="Tên sản phẩm" name="name" />
+        <input type="text" class="form-control" id="name" 
+               th:field="*{name}" placeholder="Tên sản phẩm" />
         <label for="name">Tên khoa</label>
     </div>
     <div class="form-floating mb-3 mt-3">
-        <form:input type="text"  class="form-control" id="description" 
-                    path="description" placeholder="Miêu tả" name="description" />
-        <label for="price">Miêu tả</label>
+        <input type="text" class="form-control" id="description" 
+               th:field="*{description}" placeholder="Miêu tả" />
+        <label for="description">Miêu tả</label>
     </div>
     <div class="form-floating mb-3 mt-3">
-        <form:input type="number" step="100" class="form-control" id="score" 
-                    path="score" placeholder="Điểm số" name="score" />
-        <label for="price">Điểm số</label>
+        <input type="number" step="100" class="form-control" id="score" 
+               th:field="*{score}" placeholder="Điểm số" />
+        <label for="score">Điểm số</label>
     </div>
-</form:form>
+</form>
