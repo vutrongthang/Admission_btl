@@ -15,6 +15,14 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Trang chủ" />
         <put-attribute name="content" value="/WEB-INF/pages/index.jsp" />
     </definition>
+    <definition name="banners" extends="baseLayout">
+        <put-attribute name="title" value="Banners" />
+        <put-attribute name="content" value="/WEB-INF/pages/banners.jsp" />
+    </definition>
+    <definition name="faculty" extends="baseLayout">
+        <put-attribute name="title" value="Quản trị thông tin" />
+        <put-attribute name="content" value="/WEB-INF/pages/faculty.jsp" />
+    </definition>
     <definition name="faculty-detail" extends="baseLayout">
         <put-attribute name="title" value="Chi tiết khoa" />
         <put-attribute name="content" value="/WEB-INF/pages/faculty-detail.jsp" />

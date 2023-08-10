@@ -27,7 +27,7 @@
                     </select>                        </li>
 
                 <li class="nav-item">
-                    <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location=this.value;">
+                    <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location = this.value;">
                         <option value="/" selected>Thông tin khoa-ngành</option>
                         <option value="/Admission">Các khoa</option>
                         <option value="/Admission">Bệnh viện</option>
@@ -35,7 +35,7 @@
                         <option value="/Admission">Đơn vị</option>
                     </select>
                 </li>
-              
+
 
                 <li class="nav-item">
                     <select class="form-select" aria-label="Thông tin khoa-ngành" onchange="location = this.value;">
@@ -62,12 +62,26 @@
 
                 <!-- Login and Register buttons -->
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/login"/>">Đăng nhập</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/register"/>">Đăng ký</a>
-                    </li>
+                    <c:if test="${pageContext.request.userPrincipal.name ==null}">
+                        <li class="nav-item active">
+                            <a class="nav-link text-success" href="<c:url value="/login"/>">Đăng nhập</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-success" href="<c:url value="/register"/>">Đăng ký</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${pageContext.request.userPrincipal.name !=null}">
+                        <div class="nav-item active d-flex align-items-center"> 
+                            <li >
+                                <a class="nav-link text-success me-2" href="<c:url value="/"/>">Xin chào: ${pageContext.request.userPrincipal.name} </a>
+
+                            </li>
+                            <li>
+                                <a class="nav-link text-success" href="<c:url value="/logout"/>"><i class="fa fa-sign-out-alt"></i></a>
+                            </li></div>
+                       
+                    </c:if>
+
                 </ul>
             </div>
         </nav>
