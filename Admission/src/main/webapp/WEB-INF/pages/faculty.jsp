@@ -39,11 +39,14 @@
 <c:if test="${errMsg != null}">
     ${errMsg}
 </c:if>
+<!-- ... -->
 <form method="post" action="${action}" th:object="${faculties}">
     <div class="form-floating mb-3 mt-3">
-        <input type="text" class="form-control" id="name" 
-               th:field="*{name}" placeholder="Tên sản phẩm" />
-        <label for="name">Tên khoa</label>
+        <select class="form-select" th:field="*{facultiesId}" id="facultiesId" name="facultiesId">
+            <option th:each="faculty : ${faculties}" th:value="${faculty.id}"
+                    th:text="${faculty.name}" th:selected="${faculty.id == facultiesId}"></option>
+        </select>
+        <label for="facultiesId" class="form-label">Danh mục khoa</label>
     </div>
     <div class="form-floating mb-3 mt-3">
         <input type="text" class="form-control" id="description" 
@@ -55,4 +58,11 @@
                th:field="*{score}" placeholder="Điểm số" />
         <label for="score">Điểm số</label>
     </div>
+    <div class="form-floating mb-3 mt-3">
+
+        <input type="submit"  value="Thêm thông tin" class="btn btn-success" />
+
+
+    </div>
 </form>
+<!-- ... -->
