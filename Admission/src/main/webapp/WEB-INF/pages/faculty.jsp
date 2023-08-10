@@ -40,29 +40,51 @@
     ${errMsg}
 </c:if>
 <!-- ... -->
-<form method="post" action="${action}" th:object="${faculties}">
+<form:form method="post" action="${action}" modelAttribute="faculties">
     <div class="form-floating mb-3 mt-3">
-        <select class="form-select" th:field="*{facultiesId}" id="facultiesId" name="facultiesId">
-            <option th:each="faculty : ${faculties}" th:value="${faculty.id}"
-                    th:text="${faculty.name}" th:selected="${faculty.id == facultiesId}"></option>
-        </select>
-        <label for="facultiesId" class="form-label">Danh mục khoa</label>
+        <form:input type="text" class="form-control" id="name" 
+                    path="name" placeholder="Tên khoa" name="name" />
+        <label for="name">Tên khoa</label>
     </div>
     <div class="form-floating mb-3 mt-3">
-        <input type="text" class="form-control" id="description" 
-               th:field="*{description}" placeholder="Miêu tả" />
-        <label for="description">Miêu tả</label>
+        <form:input type="number" step="100" class="form-control" id="score" 
+                    path="score" placeholder="Điểm số" name="score" />
+        <label for="price">Điểm số</label>
     </div>
     <div class="form-floating mb-3 mt-3">
-        <input type="number" step="100" class="form-control" id="score" 
-               th:field="*{score}" placeholder="Điểm số" />
-        <label for="score">Điểm số</label>
+        <c:choose>
+            <c:when test="${faculties.facultiesId > 0}">
+                <form:hidden path="id" />
+                <input type="submit"  value="Cập nhật sản phẩm" class="btn btn-success" />
+            </c:when>
+            <c:otherwise>
+                <input type="submit"  value="Thêm sản phẩm" class="btn btn-success" />
+            </c:otherwise>
+        </c:choose>
+        
     </div>
-    <div class="form-floating mb-3 mt-3">
+</form:form>
 
-        <input type="submit"  value="Thêm thông tin" class="btn btn-success" />
-
-
-    </div>
-</form>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Id</th>
+        <th>Tên Khoa</th>
+        <th>Điểm số</th>
+        <th></th>
+    </tr>
+    <c:forEach items="${products}" var="p">
+    <tr id="product${p.id}">
+        <td><img src="${p.image}" width="200" /></td>
+        <td>${p.id}</td>
+        <td>${p.name}</td>
+        <td>${p.price}</td>
+        <td>
+            <c:url value="/api/products/${p.id}" var="endpoint" />
+            <input type="button" onclick="deleteProduct('${endpoint}', ${p.id})" value="Xóa" class="btn btn-danger" />
+            <a href="<c:url value="/admin/products/${p.id}" />" class="btn btn-info">Cập nhật</a>
+        </td>
+    </tr>
+    </c:forEach>
+</table>
 <!-- ... -->
