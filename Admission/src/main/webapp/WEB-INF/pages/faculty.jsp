@@ -52,39 +52,42 @@
         <label for="price">Điểm số</label>
     </div>
     <div class="form-floating mb-3 mt-3">
+        <form:input type="text" class="form-control" id="description" 
+                    path="description" placeholder="Giới thiệu khoa" name="description" />
+        <label for="name">Giới thiệu khoa</label>
+    </div>
+    <div class="form-floating mb-3 mt-3">
         <c:choose>
             <c:when test="${faculties.facultiesId > 0}">
-                <form:hidden path="id" />
+                <form:hidden path="facultiesId" />
                 <input type="submit"  value="Cập nhật sản phẩm" class="btn btn-success" />
             </c:when>
             <c:otherwise>
                 <input type="submit"  value="Thêm sản phẩm" class="btn btn-success" />
             </c:otherwise>
         </c:choose>
-        
+
     </div>
 </form:form>
 
 <table class="table">
     <tr>
-        <th></th>
         <th>Id</th>
         <th>Tên Khoa</th>
         <th>Điểm số</th>
+        <th>Giới thiệu</th>
         <th></th>
     </tr>
-    <c:forEach items="${products}" var="p">
-    <tr id="product${p.id}">
-        <td><img src="${p.image}" width="200" /></td>
-        <td>${p.id}</td>
-        <td>${p.name}</td>
-        <td>${p.price}</td>
-        <td>
-            <c:url value="/api/products/${p.id}" var="endpoint" />
-            <input type="button" onclick="deleteProduct('${endpoint}', ${p.id})" value="Xóa" class="btn btn-danger" />
-            <a href="<c:url value="/admin/products/${p.id}" />" class="btn btn-info">Cập nhật</a>
-        </td>
-    </tr>
+    <c:forEach items="${faculty}" var="faculty">
+        <tr id="faculty${faculty.facultiesId}">
+            <td>${faculty.facultiesId}</td>
+            <td>${faculty.name}</td>
+            <td>${faculty.score}</td>
+            <td>${faculty.description}</td>
+            <td>
+                <a href="<c:url value="/admin/faculties/${faculty.facultiesId}" />" class="btn btn-info">Cập nhật</a>
+            </td>
+        </tr>
     </c:forEach>
 </table>
 <!-- ... -->

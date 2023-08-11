@@ -30,10 +30,13 @@ public class AdminController {
     @Autowired
     private FacultiesService facultiesService;
 
+     @ModelAttribute
+    public void commonAttribute(Model model) {
+         model.addAttribute("faculty", this.facultiesService.getFacultieses());
+    }
+    
     @GetMapping("/faculties")
     public String adminFaculty(Model model) {
-        List<Faculties> faculties = facultiesService.getFacultieses();
-        model.addAttribute("faculties", faculties);
         model.addAttribute("faculties", new Faculties());
         return "faculty";
     }
